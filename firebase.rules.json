@@ -1,0 +1,85 @@
+{
+  "rules": {
+    // ── Products & Categories — public read ──────────────────────────────────
+    "products": {
+      ".read": true,
+      ".write": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'",
+      "$productId": {
+        ".validate": "newData.hasChildren(['slug', 'name', 'category', 'price', 'stock'])"
+      }
+    },
+
+    "categories": {
+      ".read": true,
+      ".write": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'"
+    },
+
+    // ── Blog posts — public read, admin write ────────────────────────────────
+    "blogs": {
+      ".read": true,
+      ".write": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'"
+    },
+
+    // ── Users — own data only ────────────────────────────────────────────────
+    "users": {
+      ".read": "auth != null",
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid",
+        "role": {
+          // Role can only be written by an existing admin
+          ".write": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'"
+        }
+      }
+    },
+
+    // ── Orders — owner read, authenticated write, admin full access ──────────
+    "orders": {
+      ".read": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'",
+      "$orderId": {
+        ".read": "auth != null && (data.child('userId').val() === auth.uid || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+        ".write": "auth != null || !data.exists()",
+        // Status can only be updated by admin
+        "status": {
+          ".write": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'"
+        },
+        "statusHistory": {
+          ".write": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'"
+        }
+      }
+    },
+
+    // ── Reviews — public read, authenticated write (rate-limited) ────────────
+    "reviews": {
+      ".read": true,
+      "$reviewId": {
+        ".write": "auth != null && (!data.exists() || data.child('userId').val() === auth.uid)",
+        ".validate": "newData.hasChildren(['productId', 'userId', 'rating', 'body'])"
+      }
+    },
+
+    // ── Coupons — admin only ─────────────────────────────────────────────────
+    "coupons": {
+      ".read": "auth != null",
+      ".write": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'"
+    },
+
+    // ── Corporate enquiries — write only (no auth required), admin read ──────
+    "enquiries": {
+      ".read": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'",
+      "$enquiryId": {
+        ".write": "!data.exists()",
+        ".validate": "newData.hasChildren(['email', 'name', 'quantity', 'createdAt'])"
+      }
+    },
+
+    // ── Newsletter — write only (no auth required) ───────────────────────────
+    "newsletter": {
+      ".read": "auth != null && root.child('users').child(auth.uid).child('role').val() === 'admin'",
+      "$entryId": {
+        ".write": "!data.exists()",
+        ".validate": "newData.hasChildren(['email', 'subscribedAt'])"
+      }
+    }
+  }
+}
