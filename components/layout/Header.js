@@ -71,7 +71,7 @@ function MegaMenu({ isOpen, onClose }) {
             {/* Bottom strip */}
             <div className="mt-6 pt-6 border-t border-sand flex items-center justify-between">
               <p className="font-sans text-body-sm text-brown/70 italic">
-                "Some gifts get opened. Some become memories."
+                &quot;Some gifts get opened. Some become memories.&quot;
               </p>
               <Link
                 href="/shop"

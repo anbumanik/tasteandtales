@@ -115,7 +115,7 @@ export default function TestimonialCarousel() {
 
               {/* Body */}
               <blockquote className="font-display text-display-sm sm:text-display-md text-espresso italic leading-relaxed max-w-3xl">
-                "{t.body}"
+                &quot;{t.body}&quot;
               </blockquote>
 
               {/* Attribution */}

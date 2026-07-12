@@ -39,7 +39,7 @@ export default function EnquiryForm() {
       <div className="text-center py-10">
         <p className="font-display text-display-xs text-olive mb-2">Request Received</p>
         <p className="font-sans text-body-md text-gray">
-          We've received your details and will be in touch within 24 hours.
+          We&apos;ve received your details and will be in touch within 24 hours.
         </p>
         <Button onClick={() => reset()} variant="secondary" className="mt-6">
           Submit another request

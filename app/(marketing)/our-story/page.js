@@ -35,10 +35,10 @@ export default function OurStoryPage() {
       <section className="bg-espresso py-24 px-5 text-center">
         <div className="mx-auto max-w-4xl">
           <p className="font-display text-display-lg sm:text-display-xl text-ivory italic leading-relaxed text-balance">
-            "If it can't be made with honest ingredients, it won't be made at all."
+            &quot;If it can&apos;t be made with honest ingredients, it won&apos;t be made at all.&quot;
           </p>
           <p className="font-sans text-label-md text-gold mt-6 uppercase tracking-[0.2em]">
-            — Our Grandmother's Rule
+            — Our Grandmother&apos;s Rule
           </p>
         </div>
       </section>

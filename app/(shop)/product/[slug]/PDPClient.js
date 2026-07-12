@@ -191,7 +191,7 @@ export default function PDPClient({ product, related }) {
       content: (
         <div className="flex flex-col gap-6">
           <p className="font-display text-display-sm text-espresso italic leading-relaxed">
-            "{product.story}"
+            &quot;{product.story}&quot;
           </p>
           <QRStoryCard product={product} />
         </div>

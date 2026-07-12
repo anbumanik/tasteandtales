@@ -31,7 +31,7 @@ export default function WhatsAppFloatingButton() {
       return () => clearTimeout(tipTimer);
     }, 3000);
     return () => clearTimeout(timer);
-  }, []);
+  }, [tipDismissed]);
 
   const handleDismissTip = () => {
     setTipOpen(false);
@@ -63,7 +63,7 @@ export default function WhatsAppFloatingButton() {
                   Questions about gifting?
                 </p>
                 <p className="font-sans text-body-xs text-gray mt-0.5">
-                  We're just a WhatsApp away 🌿
+                  We&apos;re just a WhatsApp away 🌿
                 </p>
               </motion.div>
             )}

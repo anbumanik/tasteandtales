@@ -59,7 +59,7 @@ export default function StorySection() {
             Heritage has a recipe.
           </h2>
           <p className="font-sans text-body-lg text-gray max-w-xl mx-auto mt-4">
-            We didn't invent anything. We just refused to let the old ways disappear.
+            We didn&apos;t invent anything. We just refused to let the old ways disappear.
           </p>
         </motion.div>
 

@@ -42,7 +42,7 @@ export default function NotFound() {
             </motion.h1>
 
             <motion.p variants={staggerItem} className="font-sans text-body-lg text-gray mb-8">
-              The page you're looking for may have moved, or perhaps it was never there.
+              The page you&apos;re looking for may have moved, or perhaps it was never there.
               Let us take you somewhere more delicious.
             </motion.p>
 
