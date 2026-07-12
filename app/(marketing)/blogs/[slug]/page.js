@@ -73,7 +73,7 @@ export default function BlogPost({ params }) {
       <div className="mx-auto max-w-2xl px-5 sm:px-6">
         <div
           className="prose prose-brand prose-lg"
-          dangerouslySetInnerHTML={{ __html: blog.content }}
+          dangerouslySetInnerHTML={{ __html: blog.body }}
         />
         
         <div className="mt-20 pt-10 border-t border-sand flex justify-center">
