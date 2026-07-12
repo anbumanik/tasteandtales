@@ -28,6 +28,7 @@ export default function HeroBanner() {
     <section
       ref={containerRef}
       className="relative h-[90vh] min-h-[600px] w-full overflow-hidden flex items-center bg-espresso"
+      style={{ position: "relative" }}
       aria-labelledby="hero-headline"
     >
       {/* ── Background Image with Parallax ──────────────────────────────────────── */}
