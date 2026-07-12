@@ -86,7 +86,15 @@ export function Section({ bg = "ivory", padding = "lg", className, id, children 
 export function PageHeader({ title, subtitle, breadcrumbs, actions, className }) {
   return (
     <div className={cn("mb-10 sm:mb-14", className)}>
-      {breadcrumbs && <div className="mb-4">{breadcrumbs}</div>}
+      {breadcrumbs && (
+        <div className="mb-4">
+          {Array.isArray(breadcrumbs) ? (
+            <Breadcrumbs items={breadcrumbs} />
+          ) : (
+            breadcrumbs
+          )}
+        </div>
+      )}
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div>
           <h1 className="font-display text-display-lg sm:text-display-xl text-espresso text-balance">
