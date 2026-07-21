@@ -45,7 +45,7 @@ export default function HeroBanner() {
   return (
     <section 
       ref={containerRef}
-      className="relative w-full h-[100vh] overflow-hidden bg-black flex items-center justify-center"
+      className="relative w-full h-[60vh] sm:h-[80vh] md:h-[100vh] min-h-[400px] overflow-hidden bg-black flex items-center justify-center"
       aria-labelledby="hero-headline"
     >
       {/* ── Background Video ────────────────────────────────────────────────── */}
@@ -69,23 +69,23 @@ export default function HeroBanner() {
       {/* ── Centered Content ────────────────────────────────────────────────── */}
       <div 
         ref={contentRef}
-        className="relative z-20 flex flex-col items-center text-center px-6 max-w-4xl"
+        className="relative z-20 flex flex-col items-center text-center px-4 sm:px-6 max-w-4xl"
       >
         <h1 
           id="hero-headline"
-          className="text-ivory text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 drop-shadow-xl font-display"
+          className="text-ivory text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-3 sm:mb-6 drop-shadow-xl font-display"
         >
           Taste & Tales
         </h1>
-        <p className="text-ivory/90 text-lg md:text-2xl font-light drop-shadow-md font-sans max-w-2xl">
+        <p className="text-ivory/90 text-base sm:text-lg md:text-2xl font-light drop-shadow-md font-sans max-w-[90%] sm:max-w-2xl">
           Premium handcrafted Indian sweets & savouries.
           <br className="hidden sm:block" /> No preservatives. Just honest ingredients.
         </p>
       </div>
 
       {/* ── Smooth Scroll Indicator ─────────────────────────────────────────── */}
-      <div className="absolute bottom-10 z-20 flex flex-col items-center opacity-80 hover:opacity-100 transition-opacity">
-        <span className="text-ivory/70 text-[0.65rem] tracking-[0.25em] uppercase mb-4 font-sans">
+      <div className="absolute bottom-6 sm:bottom-10 z-20 flex flex-col items-center opacity-80 hover:opacity-100 transition-opacity">
+        <span className="text-ivory/70 text-[0.55rem] sm:text-[0.65rem] tracking-[0.2em] sm:tracking-[0.25em] uppercase mb-2 sm:mb-4 font-sans">
           Scroll to explore
         </span>
         <div className="w-[1px] h-12 bg-gradient-to-b from-ivory/80 to-transparent animate-pulse" />
