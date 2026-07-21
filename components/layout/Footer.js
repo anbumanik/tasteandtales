@@ -133,16 +133,14 @@ const SOCIAL_LINKS = [
 export default function Footer() {
   return (
     <footer role="contentinfo">
-      <FeatureStrip />
       <UtilityBar />
 
       {/* Main footer body */}
       <div className="bg-espresso">
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10 py-16 sm:py-20">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12">
-
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-y-10 gap-x-6 lg:gap-12">
             {/* Brand column */}
-            <div className="lg:col-span-2">
+            <div className="col-span-2 lg:col-span-2">
               <Link href="/" aria-label="Taste & Tales — Home">
                 <div className="mb-4">
                   <p className="font-display text-display-sm text-ivory font-bold">

@@ -85,11 +85,11 @@ export default function TestimonialCarousel() {
       <div className="mx-auto max-w-4xl px-5 sm:px-6 lg:px-10">
 
         {/* Heading */}
-        <div className="text-center mb-14">
-          <p className="font-sans text-label-sm text-gold uppercase tracking-[0.2em] mb-3">
+        <div className="text-center mb-10 sm:mb-14">
+          <p className="font-sans text-[10px] sm:text-label-sm text-gold uppercase tracking-[0.2em] mb-2 sm:mb-3">
             ✦ &nbsp; Stories from our community &nbsp; ✦
           </p>
-          <h2 className="font-display text-display-lg sm:text-display-xl text-espresso">
+          <h2 className="font-display text-[clamp(1.75rem,6vw,3rem)] text-espresso">
             What they remember
           </h2>
         </div>
@@ -114,7 +114,7 @@ export default function TestimonialCarousel() {
               />
 
               {/* Body */}
-              <blockquote className="font-display text-display-sm sm:text-display-md text-espresso italic leading-relaxed max-w-3xl">
+              <blockquote className="font-display text-[clamp(1.25rem,4vw,2rem)] text-espresso italic leading-relaxed max-w-3xl">
                 &quot;{t.body}&quot;
               </blockquote>
 

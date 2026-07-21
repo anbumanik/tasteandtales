@@ -190,7 +190,7 @@ export default function Header() {
             "transition-all duration-400 ease-brand w-full",
             scrolled
               ? "bg-ivory/95 backdrop-blur-md shadow-card border-b border-sand"
-              : "bg-ivory lg:bg-transparent" // solid bg on mobile always for readability
+              : "bg-ivory"
           )}
           role="banner"
         >
@@ -213,7 +213,7 @@ export default function Header() {
               className="flex flex-col items-center sm:items-start group"
               aria-label="Taste & Tales — Home"
             >
-              <span className="font-display text-display-xs sm:text-display-sm text-olive font-bold leading-none tracking-tight group-hover:text-espresso transition-colors">
+              <span className="font-display text-lg sm:text-display-sm text-olive font-bold leading-none tracking-tight group-hover:text-espresso transition-colors whitespace-nowrap">
                 Taste & Tales
               </span>
               <span className="font-sans text-label-sm text-gold tracking-[0.15em] uppercase hidden sm:block">
@@ -236,6 +236,7 @@ export default function Header() {
                 >
                   <Link
                     href={link.href}
+                    prefetch={true}
                     className={cn(
                       "flex items-center gap-1 px-4 py-2 rounded-full",
                       "font-sans font-semibold text-label-lg text-gray",

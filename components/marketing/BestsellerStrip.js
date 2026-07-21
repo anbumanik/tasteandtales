@@ -33,7 +33,7 @@ export default function BestsellerStrip({ products }) {
       className="bg-ivory py-20 sm:py-28"
       aria-labelledby="bestsellers-heading"
     >
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
+      <div className="w-full px-5 sm:px-6 lg:px-12">
 
         {/* Header */}
         <motion.div
@@ -93,10 +93,10 @@ export default function BestsellerStrip({ products }) {
         {/* Mobile/Tablet: horizontal scroll */}
         <div
           ref={scrollRef}
-          className="lg:hidden flex gap-4 overflow-x-auto scrollbar-hide pb-4 -mx-5 px-5"
+          className="lg:hidden flex gap-2 overflow-x-auto scrollbar-hide pb-4 -mx-2 px-2"
         >
           {products.map((product) => (
-            <div key={product.id} className="shrink-0 w-[72vw] sm:w-[45vw] max-w-[280px]">
+            <div key={product.id} className="shrink-0 w-[46vw] max-w-[280px]">
               <ProductCard product={product} />
             </div>
           ))}

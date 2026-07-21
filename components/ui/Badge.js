@@ -82,8 +82,8 @@ export function TrustChip({ variant = "dark", icon, className, children }) {
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full",
-        "font-sans font-semibold text-label-sm tracking-wide",
+        "inline-flex items-center gap-1 sm:gap-1.5 px-1.5 sm:px-3 py-1 sm:py-1.5 rounded-full shrink-0 whitespace-nowrap",
+        "font-sans font-semibold text-[9px] sm:text-label-sm tracking-wide",
         variant === "dark"
           ? "bg-olive text-ivory"
           : "bg-ivory/10 text-ivory border border-ivory/20",
@@ -107,7 +107,7 @@ export function TrustChipRail({ variant = "dark", className }) {
     <div
       role="list"
       aria-label="Our brand promises"
-      className={cn("flex flex-wrap gap-2", className)}
+      className={cn("grid grid-cols-2 sm:flex sm:flex-wrap gap-2 pb-2 sm:pb-0", className)}
     >
       {TRUST_ITEMS.map((item) => (
         <TrustChip key={item.id} variant={variant} icon={item.icon} role="listitem">

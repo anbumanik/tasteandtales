@@ -97,10 +97,10 @@ export default function CorporateGiftingBanner() {
                 variants={staggerItem}
                 className="bg-ivory/5 border border-ivory/10 rounded-2xl p-6"
               >
-                <p className="font-display text-display-md text-gold font-bold">
+                <p className="font-display text-3xl sm:text-display-md text-gold font-bold leading-none mb-1">
                   {stat.value}
                 </p>
-                <p className="font-sans text-label-md text-ivory/60 mt-1 uppercase tracking-wider">
+                <p className="font-sans text-[10px] sm:text-label-sm text-ivory/60 uppercase tracking-wider">
                   {stat.label}
                 </p>
               </motion.div>
