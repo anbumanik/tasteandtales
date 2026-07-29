@@ -103,7 +103,7 @@ export default function AccountPage() {
             </h3>
             <div className="flex flex-col items-center justify-center h-48 text-center">
               <Package size={40} className="text-sand mb-3" />
-              <p className="text-brown/70">You haven't placed any orders yet.</p>
+              <p className="text-brown/70">You haven&apos;t placed any orders yet.</p>
             </div>
           </div>
         </div>
