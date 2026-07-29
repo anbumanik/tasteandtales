@@ -285,6 +285,7 @@ export default function CartDrawer() {
                   fullWidth
                   size="lg"
                   onClick={closeDrawer}
+                  className="!text-gold"
                 >
                   Proceed to Checkout →
                 </Button>

@@ -12,10 +12,10 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Search, Heart, ShoppingBag, User, X, Menu,
-  Leaf, ChevronDown,
+  Leaf, ChevronDown, Package
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useCartStore, useWishlistStore, useUIStore } from "@/lib/store";
+import { useCartStore, useWishlistStore, useUIStore, useAuthStore } from "@/lib/store";
 import { CATEGORIES } from "@/data/categories";
 import { fadeIn, slideUp } from "@/lib/motion";
 
@@ -166,6 +166,7 @@ export default function Header() {
   const [megaOpen, setMegaOpen] = useState(false);
   const { isMobileMenuOpen, openMobileMenu, closeMobileMenu, openSearch } = useUIStore();
   const { openDrawer } = useCartStore();
+  const { user, role, openAuthModal } = useAuthStore();
 
   // Cart count from Zustand (computed)
   const cartItemCount = useCartStore((s) =>
@@ -280,14 +281,33 @@ export default function Header() {
                 )}
               </Link>
 
-              {/* Account */}
+              {/* Orders */}
               <Link
-                href="/account"
+                href="/orders"
                 className="hidden sm:flex p-2.5 rounded-full text-gray hover:text-olive hover:bg-sand transition-colors focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
-                aria-label="Account"
+                aria-label="Orders"
               >
-                <User size={20} />
+                <Package size={20} />
               </Link>
+
+              {/* Account */}
+              {user ? (
+                <Link
+                  href={role === 'admin' ? '/admin' : '/account'}
+                  className="hidden sm:flex p-2.5 rounded-full text-gray hover:text-olive hover:bg-sand transition-colors focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
+                  aria-label="Account"
+                >
+                  <User size={20} />
+                </Link>
+              ) : (
+                <button
+                  onClick={openAuthModal}
+                  className="hidden sm:flex p-2.5 rounded-full text-gray hover:text-olive hover:bg-sand transition-colors focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
+                  aria-label="Log In"
+                >
+                  <User size={20} />
+                </button>
+              )}
 
               {/* Cart */}
               <button
@@ -327,8 +347,7 @@ export default function Header() {
       {/* Mobile menu */}
       <MobileMenu isOpen={isMobileMenuOpen} onClose={closeMobileMenu} />
 
-      {/* Header height spacer — prevents content going under fixed header */}
-      <div className="h-16 sm:h-18" aria-hidden="true" />
+
     </>
   );
 }

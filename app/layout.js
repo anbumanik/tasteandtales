@@ -2,6 +2,7 @@ import { Fraunces, Manrope } from "next/font/google";
 import "@/styles/globals.css";
 import { organizationSchema } from "@/lib/seo";
 import { Toaster } from "react-hot-toast";
+import AuthModal from "@/components/auth/AuthModal";
 
 // ─── Font loading ─────────────────────────────────────────────────────────────
 
@@ -106,9 +107,13 @@ export default function RootLayout({ children }) {
           }}
         />
 
+        {/* Global Auth Modal */}
+        <AuthModal />
+
         {/* Main app content — layouts wrap this via Route Groups */}
         {children}
       </body>
     </html>
   );
 }
+

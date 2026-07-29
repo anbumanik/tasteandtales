@@ -55,24 +55,27 @@ export default function BestsellerStrip({ products }) {
             </h2>
           </div>
 
-          {/* Desktop: View all + carousel arrows */}
-          <div className="hidden sm:flex items-center gap-3">
-            <button
-              onClick={() => scroll(-1)}
-              className="p-2 rounded-full border border-sand hover:border-gold hover:text-gold text-brown/60 transition-colors focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
-              aria-label="Scroll left"
-            >
-              <ChevronLeft size={18} />
-            </button>
-            <button
-              onClick={() => scroll(1)}
-              className="p-2 rounded-full border border-sand hover:border-gold hover:text-gold text-brown/60 transition-colors focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
-              aria-label="Scroll right"
-            >
-              <ChevronRight size={18} />
-            </button>
+          {/* Desktop & Mobile: Actions */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="hidden sm:flex items-center gap-2">
+              <button
+                onClick={() => scroll(-1)}
+                className="p-2 rounded-full border border-sand hover:border-gold hover:text-gold text-brown/60 transition-colors focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
+                aria-label="Scroll left"
+              >
+                <ChevronLeft size={18} />
+              </button>
+              <button
+                onClick={() => scroll(1)}
+                className="p-2 rounded-full border border-sand hover:border-gold hover:text-gold text-brown/60 transition-colors focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
+                aria-label="Scroll right"
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
             <Button href="/shop" variant="secondary" size="sm" trailingIcon={<ArrowRight size={14} />}>
-              View all
+              <span className="hidden sm:inline">View all</span>
+              <span className="sm:hidden">View all</span>
             </Button>
           </div>
         </motion.div>
@@ -90,23 +93,11 @@ export default function BestsellerStrip({ products }) {
           ))}
         </motion.div>
 
-        {/* Mobile/Tablet: horizontal scroll */}
-        <div
-          ref={scrollRef}
-          className="lg:hidden flex gap-2 overflow-x-auto scrollbar-hide pb-4 -mx-2 px-2"
-        >
-          {products.map((product) => (
-            <div key={product.id} className="shrink-0 w-[46vw] max-w-[280px]">
-              <ProductCard product={product} />
-            </div>
+        {/* Mobile/Tablet: grid view */}
+        <div className="lg:hidden grid grid-cols-2 gap-x-3 gap-y-6">
+          {products.slice(0, 4).map((product) => (
+            <ProductCard key={product.id} product={product} />
           ))}
-        </div>
-
-        {/* Mobile: View all CTA */}
-        <div className="flex justify-center mt-8 sm:hidden">
-          <Button href="/shop" variant="secondary" trailingIcon={<ArrowRight size={14} />}>
-            View all products
-          </Button>
         </div>
 
         {/* Gold divider */}

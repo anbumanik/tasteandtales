@@ -98,7 +98,7 @@ export default function ProductCard({ product, layout = "grid", featured = false
           <button onClick={handleWishlist} className="p-1.5 rounded-full hover:bg-beige transition-colors" aria-label={wishlisted ? "Remove from wishlist" : "Save to wishlist"}>
             <Heart size={16} className={wishlisted ? "fill-gold stroke-gold" : "stroke-brown/40"} />
           </button>
-          <Button size="sm" onClick={handleAddToCart} disabled={isOutOfStock}>
+          <Button variant="gold" size="sm" onClick={handleAddToCart} disabled={isOutOfStock}>
             {isOutOfStock ? "Resting…" : "Add"}
           </Button>
         </div>
@@ -171,7 +171,7 @@ export default function ProductCard({ product, layout = "grid", featured = false
             )}>
               <button
                 onClick={handleAddToCart}
-                className="w-full py-2.5 bg-olive text-ivory rounded-xl font-sans font-semibold text-label-md hover:bg-espresso transition-colors"
+                className="w-full py-2.5 bg-gold text-espresso rounded-xl font-sans font-semibold text-label-md hover:bg-olive hover:text-ivory transition-colors"
               >
                 Add to Box
               </button>

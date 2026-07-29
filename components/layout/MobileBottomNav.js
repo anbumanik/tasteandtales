@@ -10,7 +10,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Home, ShoppingBag, Heart, Gift, User } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useCartStore, useWishlistStore } from "@/lib/store";
+import { useCartStore, useWishlistStore, useAuthStore } from "@/lib/store";
 
 const NAV_ITEMS = [
   { href: "/",          label: "Home",     icon: Home },
@@ -26,6 +26,7 @@ export default function MobileBottomNav() {
     s.items.reduce((sum, i) => sum + i.quantity, 0)
   );
   const wishlistCount = useWishlistStore((s) => s.ids.length);
+  const { user, role, openAuthModal } = useAuthStore();
 
   return (
     <nav
@@ -45,19 +46,11 @@ export default function MobileBottomNav() {
                 ? wishlistCount
                 : 0;
 
-            return (
-              <Link
-                key={href}
-                href={href}
-                className={cn(
-                  "relative flex flex-col items-center gap-0.5 px-3 py-3",
-                  "font-sans text-label-sm transition-colors",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 rounded-xl",
-                  isActive ? "text-olive" : "text-brown/60 hover:text-brown"
-                )}
-                aria-current={isActive ? "page" : undefined}
-                aria-label={`${label}${badgeCount > 0 ? `, ${badgeCount} item${badgeCount > 1 ? "s" : ""}` : ""}`}
-              >
+            const isAccount = href === "/account";
+            const actualHref = isAccount && user && role === 'admin' ? '/admin' : href;
+            
+            const content = (
+              <>
                 <span className="relative">
                   <Icon
                     size={22}
@@ -87,6 +80,38 @@ export default function MobileBottomNav() {
                     aria-hidden="true"
                   />
                 )}
+              </>
+            );
+
+            const className = cn(
+              "relative flex flex-col items-center gap-0.5 px-3 py-3",
+              "font-sans text-label-sm transition-colors",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 rounded-xl",
+              isActive ? "text-olive" : "text-brown/60 hover:text-brown"
+            );
+
+            if (isAccount && !user) {
+              return (
+                <button
+                  key={href}
+                  onClick={openAuthModal}
+                  className={className}
+                  aria-label="Log In"
+                >
+                  {content}
+                </button>
+              );
+            }
+
+            return (
+              <Link
+                key={href}
+                href={actualHref}
+                className={className}
+                aria-current={isActive ? "page" : undefined}
+                aria-label={`${label}${badgeCount > 0 ? `, ${badgeCount} item${badgeCount > 1 ? "s" : ""}` : ""}`}
+              >
+                {content}
               </Link>
             );
           })}

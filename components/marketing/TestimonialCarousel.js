@@ -95,7 +95,7 @@ export default function TestimonialCarousel() {
         </div>
 
         {/* Quote card */}
-        <div className="relative min-h-[280px] flex items-center">
+        <div className="relative min-h-[400px] sm:min-h-[350px] flex items-center justify-center">
           <AnimatePresence mode="wait" initial={false} custom={direction}>
             <motion.div
               key={t.id}
